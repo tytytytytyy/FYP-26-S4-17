@@ -16,6 +16,10 @@ and those labels are used to retrain the model.
 | `sensor/` | Sensor agent (CICFlowMeter capture, heartbeat, buffer) | B (Leika) |
 | `ml/` | Training, scoring and retraining code, notebooks | C (Khalis) |
 | `docs/` | Agreed formats, design notes | Everyone |
+| `marketing/` | Public marketing site (plain HTML/CSS), deployed to GitHub Pages | Everyone |
+
+The marketing site deploys automatically when `marketing/` changes on `main`:
+https://tytytytytyy.github.io/FYP-26-S4-17/
 
 ## Run it locally
 
