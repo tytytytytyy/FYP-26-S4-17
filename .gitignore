@@ -1,0 +1,35 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.ruff_cache/
+*.egg-info/
+
+# Node
+node_modules/
+dist/
+
+# Environment and secrets
+.env
+*.key
+
+# Data and models (too big for git)
+ml/data/
+*.csv
+*.pcap
+*.pcapng
+*.joblib
+*.pkl
+mlruns/
+
+# Sensor local buffer
+sensor/buffer/
+
+# Editors and OS
+.vscode/*
+!.vscode/extensions.json
+.idea/
+.DS_Store
+Thumbs.db
