@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HITL IDS | Machine-speed detection, human judgement</title>
+  <meta name="description" content="A live intrusion detection dashboard where machine learning flags suspicious network traffic in seconds and analysts decide what is real. Every decision helps the model improve.">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <header class="nav">
+    <div class="wrap nav-inner">
+      <a class="brand" href="#top">
+        <span class="brand-mark" aria-hidden="true"></span>
+        HITL IDS
+      </a>
+      <nav aria-label="Main">
+        <a href="#how">How it works</a>
+        <a href="#features">Features</a>
+        <a href="#team">Team</a>
+        <a class="nav-cta" href="https://github.com/tytytytytyy/FYP-26-S4-17">GitHub</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+
+    <!-- Hero -->
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div>
+          <p class="eyebrow">Human-in-the-loop intrusion detection</p>
+          <h1>Machine-speed detection.<br><span class="accent">Human judgement.</span></h1>
+          <p class="lead">
+            A live network monitoring dashboard. Machine learning flags suspicious traffic
+            within seconds, and your analysts decide what is real. Every decision they make
+            helps the model get better.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#how">See how it works</a>
+            <a class="btn btn-ghost" href="https://github.com/tytytytytyy/FYP-26-S4-17">View the code</a>
+          </div>
+        </div>
+
+        <!-- Example alert, matches the agreed Alert format in docs/formats.md -->
+        <figure class="alert-card" aria-label="Example alert">
+          <div class="alert-top">
+            <span class="live-dot" aria-hidden="true"></span>
+            <span class="alert-label">New alert</span>
+            <span class="pill pill-high">High</span>
+          </div>
+          <p class="alert-title">Brute Force</p>
+          <p class="alert-meta">Known attack · 92% confidence</p>
+          <dl class="alert-flow">
+            <div><dt>Source</dt><dd>10.0.0.5:51514</dd></div>
+            <div><dt>Destination</dt><dd>10.0.0.9:22</dd></div>
+            <div><dt>Sensor</dt><dd>sensor-1</dd></div>
+          </dl>
+          <p class="alert-ask">Your call:</p>
+          <div class="alert-actions">
+            <span class="choice choice-tp">True Positive</span>
+            <span class="choice choice-bp">Benign Positive</span>
+            <span class="choice choice-fp">False Positive</span>
+          </div>
+          <figcaption>Example alert for illustration</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- Problem -->
+    <section class="section problem">
+      <div class="wrap">
+        <h2>Why we are building this</h2>
+        <div class="cards three">
+          <article class="card">
+            <h3>Too many alerts</h3>
+            <p>Security teams get buried in alerts. When most of them are noise, the real attacks are easy to miss.</p>
+          </article>
+          <article class="card">
+            <h3>Black-box models</h3>
+            <p>Many ML detectors give a verdict with no context, so analysts cannot tell how much to trust it.</p>
+          </article>
+          <article class="card">
+            <h3>Models go stale</h3>
+            <p>Networks change over time. A model trained once slowly drifts and starts raising the wrong alerts.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- How it works -->
+    <section class="section" id="how">
+      <div class="wrap">
+        <h2>How it works</h2>
+        <p class="section-lead">Four steps, running as one continuous loop.</p>
+        <ol class="steps">
+          <li class="step">
+            <span class="step-num">1</span>
+            <h3>Capture</h3>
+            <p>A small sensor on your network watches live traffic with CICFlowMeter and turns each connection into a flow record. It sends a heartbeat every 30 seconds and keeps flows safe if the server is briefly unreachable.</p>
+          </li>
+          <li class="step">
+            <span class="step-num">2</span>
+            <h3>Detect</h3>
+            <p>Two models score every flow. A Random Forest spots known attack types, and an Isolation Forest flags unusual behaviour it has never seen before. Each alert comes with a confidence score and a severity.</p>
+          </li>
+          <li class="step">
+            <span class="step-num">3</span>
+            <h3>Review</h3>
+            <p>Alerts stream straight onto the dashboard. Analysts investigate and close each one as a True Positive, Benign Positive or False Positive.</p>
+          </li>
+          <li class="step">
+            <span class="step-num">4</span>
+            <h3>Learn</h3>
+            <p>Those decisions become training labels. Retraining uses them and shows before-and-after scores, so the model gets better at telling real threats from noise in your network.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- Features -->
+    <section class="section alt" id="features">
+      <div class="wrap">
+        <h2>What you get</h2>
+        <div class="cards three">
+          <article class="card feature">
+            <h3>Live alert feed</h3>
+            <p>New alerts appear on the dashboard as they happen, pushed over WebSocket. No refreshing.</p>
+          </article>
+          <article class="card feature">
+            <h3>Known attacks and anomalies</h3>
+            <p>Catch familiar attack categories, plus strange behaviour that does not match anything seen before.</p>
+          </article>
+          <article class="card feature">
+            <h3>Confidence and severity</h3>
+            <p>Every alert shows how sure the model is and how serious the threat could be, from low to critical.</p>
+          </article>
+          <article class="card feature">
+            <h3>Three-way decisions</h3>
+            <p>Benign Positive separates "real but harmless" from "wrong", giving the model clearer feedback.</p>
+          </article>
+          <article class="card feature">
+            <h3>Retrain on demand</h3>
+            <p>Retrain the model on your team's labels and compare its scores before and after.</p>
+          </article>
+          <article class="card feature">
+            <h3>Reliable sensor</h3>
+            <p>Heartbeats show the sensor is alive, and a local buffer resends flows after a network drop.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Status -->
+    <section class="section status">
+      <div class="wrap status-inner">
+        <span class="pill pill-dev">In development</span>
+        <p>HITL IDS is being built as a final year project. Follow our progress on GitHub.</p>
+        <a class="btn btn-primary" href="https://github.com/tytytytytyy/FYP-26-S4-17">Follow on GitHub</a>
+      </div>
+    </section>
+
+    <!-- Team -->
+    <section class="section" id="team">
+      <div class="wrap">
+        <h2>The team</h2>
+        <p class="section-lead">Group FYP-26-S4-17</p>
+        <ul class="team">
+          <li class="member"><span class="avatar" aria-hidden="true">T</span><p class="name">Tai</p><p class="role">Backend</p></li>
+          <li class="member"><span class="avatar" aria-hidden="true">L</span><p class="name">Leika</p><p class="role">Sensor</p></li>
+          <li class="member"><span class="avatar" aria-hidden="true">K</span><p class="name">Khalis</p><p class="role">Machine learning</p></li>
+          <li class="member"><span class="avatar" aria-hidden="true">M</span><p class="name">Mahalakshmi</p><p class="role">Backend and frontend</p></li>
+          <li class="member"><span class="avatar" aria-hidden="true">J</span><p class="name">Jerome</p><p class="role">Frontend</p></li>
+        </ul>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="wrap footer-inner">
+      <p>HITL IDS · FYP-26-S4-17</p>
+      <p>CSIT321 Final Year Project, University of Wollongong at SIM</p>
+    </div>
+  </footer>
+
+</body>
+</html>
